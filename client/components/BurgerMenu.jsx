@@ -1,14 +1,13 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import NavTab from './NavTab.jsx';
-import Write from './Write.jsx';
+// import Write from './Write.jsx';
 
 class BurgerMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       clicked: false,
-      write: false,
       journal: {},
     }
 
@@ -22,25 +21,25 @@ class BurgerMenu extends React.Component {
   }
 
   handleClickMenu(journal) {
+
+    this.props.post(false);
     this.setState({clicked: true, journal:journal});
   }
 
   handleClickWrite() {
-    this.props.post()
-    this.setState({write: true, clicked: false});
+    this.setState({clicked: false});
+    this.props.post(true)
   }
 
   render() {
     const journals = this.props.all;
-    const {clicked, write, journal} = this.state;
+    const {clicked, journal} = this.state;
     let showInfo = '';
-    let form = '';
+    // let form = '';
     if (clicked) {
       showInfo = <NavTab info={journal}/>;
     }
-    if (write) {
-      form = <Write />
-    }
+
 
     return (
       <div>

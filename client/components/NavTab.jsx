@@ -3,9 +3,10 @@ import Images from './Images.jsx';
 
 const NavTab = ({info}) => {
     return (
-        <div>
+        <div className="show-info">
             <h3>{info.title}</h3>
-            <Images img={info.images}/>
+            {info.images ? 
+            <Images img={info.images}/> : <div></div>}
             <p>{info.descriptions}</p>
         </div>
     )

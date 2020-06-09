@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Images = ({ img }) => {
     // console.log(img);
     return (
-        <div>
+        <div className="show-img">
             {img.map((image, idx) => 
               <img src={image} key={idx + image}></img>    
             )}

@@ -24,7 +24,9 @@ app.get('/journals', (req, res) => {
 });
 
 app.post('/journals', (req, res) => {
-    let journal = req.body;
+    let journal = req.body.data;
+    journal.images=[]
+    // console.log(journal);
     Journal.create(journal)
     .then((data) => {
         console.log(data);
@@ -33,7 +35,7 @@ app.post('/journals', (req, res) => {
     .catch((err) => {
         console.log(err);
     })
-
+    // res.send(journal)
     
 })
 

@@ -25,6 +25,7 @@ class App extends React.Component {
 
     this.fetchData = this.fetchData.bind(this);
     this.setWrite = this.setWrite.bind(this);
+    this.postData = this.postData.bind(this);
   }
 
   componentDidMount() {
@@ -42,18 +43,20 @@ class App extends React.Component {
       });
   }
 
-//   postData() {
-//     axios.patch('/journals', { vote, id })
-//       .then((response) => {
-//         this.fetchData(Number(productId));
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   }
+  postData(data) {
+    // console.log(data);
+    axios.post('/journals', {data})
+      .then((response) => {
+        this.fetchData();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
-  setWrite() {
-    this.setState({write: true});
+  setWrite(isWrite) {
+    // console.log(isWrite);
+    this.setState({write: isWrite});
   }
 
   render() {
@@ -61,7 +64,7 @@ class App extends React.Component {
       let newPost = '';
 
       if (write) {
-        newPost = <Write />;
+        newPost = <Write getData={this.postData}/>;
       }
 
     return (

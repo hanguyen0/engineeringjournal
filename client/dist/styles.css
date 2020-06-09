@@ -73,3 +73,41 @@
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
+
+  .form, .show-img {
+    display: flex;
+    width: 70%;
+    margin: 20px;
+    flex-flow: column nowrap;
+  }
+
+  .form label{
+    margin-top: 40px;
+  }
+
+  input, textarea{
+    width:100%;
+    padding:10px;
+    box-sizing:border-box;
+    background:none;
+    outline:none;
+    resize:none;
+    border:0;
+    font-family:'Montserrat',sans-serif;
+    transition:all .3s;
+    border:2px solid #8a867c;
+  }
+  
+  input:focus {
+    border:2px solid #b8ab8c;
+  }
+
+  .write-form{
+    margin-top: 50px;
+  }
+
+  .show-info{
+    margin-top: 50px;
+    margin-left: 100px;
+  }
+
