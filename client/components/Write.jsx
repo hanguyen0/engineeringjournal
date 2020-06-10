@@ -1,5 +1,5 @@
 import React from 'react';
-// import UploadImage from './UploadImage.jsx';
+import UploadImage from './UploadImage.jsx';
 // import AcceptImage from './AcceptImage.jsx';
 
 class Write extends React.Component {
@@ -8,7 +8,7 @@ class Write extends React.Component {
         this.state = {
             title: '',
             descriptions: '',
-
+            images:[],
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +22,7 @@ class Write extends React.Component {
     }
 
     getFiles(files) {
+        console.log(files);
         this.setState({images: files})
     }
 
@@ -47,9 +48,9 @@ class Write extends React.Component {
                             cols={5}
                         />
                     </label>
-                    {/* <label>Upload images:
+                    <label>Upload images:
                         <UploadImage getImages={this.getFiles}/>
-                    </label> */}
+                    </label>
                     {/* <AcceptImage /> */}
                     <input type="submit" value="Submit" />
                 </form>

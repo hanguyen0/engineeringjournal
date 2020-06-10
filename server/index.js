@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const cors = require('cors')
+const multer = require('multer');
+const cors = require('cors');
 const db = require('../database/index.js');
 const Journal = require('../database/models/journals.js');
 const path = require('path');
@@ -23,10 +24,23 @@ app.get('/journals', (req, res) => {
     
 });
 
+const DIR = './uploads';
+
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+    cb(null, DIR)
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname, Date.now() + '-' +file.originalname )
+  }
+});
+let upload = multer({ storage: storage }).array('file')
+
 app.post('/journals', (req, res) => {
     let journal = req.body.data;
-    journal.images=[]
-    // console.log(journal);
+    // journal.images=[]
+    console.log(journal);
+    // console.log(req.file);
     Journal.create(journal)
     .then((data) => {
         console.log(data);
@@ -35,7 +49,15 @@ app.post('/journals', (req, res) => {
     .catch((err) => {
         console.log(err);
     })
-    // res.send(journal)
+    // upload(req, res, function (err) {
+    //     if (err instanceof multer.MulterError) {
+    //         return res.status(500).json(err)
+    //     } else if (err) {
+    //         return res.status(500).json(err)
+    //     }
+    //     return res.status(200).send(req.file)
+
+    //     })
     
 })
 
