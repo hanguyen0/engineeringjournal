@@ -1,6 +1,8 @@
-1. [Start]#Start
+A journaling app built with React, Express and MongDB
 
-##Start
+1. [Start](#Start)
+
+## Start
 ```sh
 npm install
 npm start
